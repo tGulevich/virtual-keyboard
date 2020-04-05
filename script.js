@@ -78,19 +78,19 @@ class Keyboard {
           evt.target.classList.toggle('active');
           if (evt.target.classList.contains('active')) {
             if (this.lang === 'EN') {
-              this.setSymbols(keys, KEY_UPPER_EN);
+              Keyboard.setSymbols(keys, KEY_UPPER_EN);
             } else {
-              this.setSymbols(keys, KEY_UPPER_RU);
+              Keyboard.setSymbols(keys, KEY_UPPER_RU);
             }
           } else if (this.lang === 'EN') {
-            this.setSymbols(keys, KEY_EN);
+            Keyboard.setSymbols(keys, KEY_EN);
           } else {
-            this.setSymbols(keys, KEY_RU);
+            Keyboard.setSymbols(keys, KEY_RU);
           }
         } else {
           evt.target.classList.add('active');
           setTimeout(() => { evt.target.classList.remove('active'); }, 200);
-          this.addSymbol(evt.target.textContent);
+          Keyboard.addSymbol(evt.target.textContent);
         }
       });
     });
@@ -108,30 +108,30 @@ class Keyboard {
 
       if (evt.shiftKey) {
         if (this.lang === 'EN') {
-          this.setSymbols(keys, KEY_UPPER_EN);
+          Keyboard.setSymbols(keys, KEY_UPPER_EN);
         } else {
-          this.setSymbols(keys, KEY_UPPER_RU);
+          Keyboard.setSymbols(keys, KEY_UPPER_RU);
         }
       }
 
       if (evt.getModifierState('CapsLock')) {
         if (evt.shiftKey) {
           if (this.lang === 'EN') {
-            this.setSymbols(keys, KEY_EN);
+            Keyboard.setSymbols(keys, KEY_EN);
           } else {
-            this.setSymbols(keys, KEY_RU);
+            Keyboard.setSymbols(keys, KEY_RU);
           }
         } else if (this.lang === 'EN') {
-          this.setSymbols(keys, KEY_UPPER_EN);
+          Keyboard.setSymbols(keys, KEY_UPPER_EN);
         } else {
-          this.setSymbols(keys, KEY_UPPER_RU);
+          Keyboard.setSymbols(keys, KEY_UPPER_RU);
         }
       }
 
       if (evt.repeat) {
-        this.addSymbol(keys[keyIndex].textContent);
+        Keyboard.addSymbol(keys[keyIndex].textContent);
       } else {
-        this.addSymbol(keys[keyIndex].textContent);
+        Keyboard.addSymbol(keys[keyIndex].textContent);
       }
     });
 
@@ -139,28 +139,28 @@ class Keyboard {
       if (evt.code === 'ShiftLeft' || evt.code === 'ShiftRight') {
         if (evt.getModifierState('CapsLock')) {
           if (this.lang === 'EN') {
-            this.setSymbols(keys, KEY_UPPER_EN);
+            Keyboard.setSymbols(keys, KEY_UPPER_EN);
           } else {
-            this.setSymbols(keys, KEY_UPPER_RU);
+            Keyboard.setSymbols(keys, KEY_UPPER_RU);
           }
         } else if (this.lang === 'EN') {
-          this.setSymbols(keys, KEY_EN);
+          Keyboard.setSymbols(keys, KEY_EN);
         } else {
-          this.setSymbols(keys, KEY_RU);
+          Keyboard.setSymbols(keys, KEY_RU);
         }
       }
 
       if (evt.getModifierState('CapsLock') === false) {
         if (!evt.shiftKey) {
           if (this.lang === 'EN') {
-            this.setSymbols(keys, KEY_EN);
+            Keyboard.setSymbols(keys, KEY_EN);
           } else {
-            this.setSymbols(keys, KEY_RU);
+            Keyboard.setSymbols(keys, KEY_RU);
           }
         } else if (this.lang === 'EN') {
-          this.setSymbols(keys, KEY_UPPER_EN);
+          Keyboard.setSymbols(keys, KEY_UPPER_EN);
         } else {
-          this.setSymbols(keys, KEY_UPPER_RU);
+          Keyboard.setSymbols(keys, KEY_UPPER_RU);
         }
       }
       const keyIndex = KEY_CODES.indexOf(evt.code);
@@ -173,7 +173,7 @@ window.onload = () => {
   const keyboard = new Keyboard();
   keyboard.createDOM();
   const KEYS = document.querySelectorAll('.key');
-  keyboard.setSymbols(KEYS, KEY_EN);
+  Keyboard.setSymbols(KEYS, KEY_EN);
   keyboard.clickKey(KEYS);
   keyboard.pressKey(KEYS);
 };
