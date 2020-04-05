@@ -89,4 +89,9 @@ body {
 .key-xxl{grid-column: span 9; }
 .key-space{grid-column: span 20;}
 
+.tip {
+    margin-top: 30px;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+}
 
