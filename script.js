@@ -186,7 +186,7 @@ class Keyboard {
           if (this.lang === 'EN') {
             Keyboard.setSymbols(keys, KEY_UPPER_EN);
           } else {
-            Keyboard.setSymbols(keys, KEY_UPPER_RU);s
+            Keyboard.setSymbols(keys, KEY_UPPER_RU);
           }
         }
       }
