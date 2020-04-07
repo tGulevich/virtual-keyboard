@@ -45,7 +45,7 @@ class Keyboard {
 
     this.container = document.createElement('div');
     this.container.className = 'container';
-    this.container.innerHTML = '<textarea name="" id="" cols="30" rows="10" class="input-field"></textarea>';
+    this.container.innerHTML = '<textarea name="" id="" cols="30" rows="10" class="input-field" autofocus></textarea>';
     this.container.append(this.keyboardDiv);
     this.container.append(this.tip);
     this.body.append(this.container);
@@ -176,16 +176,22 @@ class Keyboard {
       const keyIndex = KEY_CODES.indexOf(evt.code);
       if (KEY_CODES.indexOf(evt.code) >= 0) {
         keys[keyIndex].classList.remove('active');
+      } else if (evt.code === 'CapsLock') {
+        keys[keyIndex].classList.toggle('active');
       }
     });
   }
 }
+
 
 window.onload = () => {
   const keyboard = new Keyboard();
   keyboard.createDOM();
   const input = document.querySelector('.input-field');
   input.addEventListener('keydown', (evt) => evt.preventDefault());
+  document.querySelector('textarea').addEventListener('blur', (event) => {
+    event.target.focus();
+  });
   const KEYS = document.querySelectorAll('.key');
   if (localStorage.getItem('language') === 'EN') {
     Keyboard.setSymbols(KEYS, KEY_EN);
