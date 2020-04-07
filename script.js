@@ -9,6 +9,8 @@ const [KEY_EN, KEY_UPPER_EN, KEY_RU, KEY_UPPER_RU] = TEXT_KEYS;
 class Keyboard {
   constructor() {
     this.lang = localStorage.getItem('language') || 'EN';
+    this.upper = localStorage.getItem('upper') || false;
+
   }
 
   createDOM() {
@@ -27,6 +29,7 @@ class Keyboard {
       } else if (el === 'CapsLock') {
         keyDiv.classList.add('key-xl');
         keyDiv.classList.add('small-font');
+        keyDiv.classList.add('caps');
       } else if (el === 'ShiftLeft' || el === 'ShiftRight' || el === 'Enter') {
         keyDiv.classList.add('key-xl');
         keyDiv.classList.add('small-font');
@@ -45,7 +48,7 @@ class Keyboard {
 
     this.container = document.createElement('div');
     this.container.className = 'container';
-    this.container.innerHTML = '<textarea name="" id="" cols="30" rows="10" class="input-field"></textarea>';
+    this.container.innerHTML = '<textarea name="" id="" cols="30" rows="10" class="input-field" autofocus></textarea>';
     this.container.append(this.keyboardDiv);
     this.container.append(this.tip);
     this.body.append(this.container);
@@ -84,10 +87,12 @@ class Keyboard {
             } else {
               Keyboard.setSymbols(keys, KEY_UPPER_RU);
             }
-          } else if (this.lang === 'EN') {
-            Keyboard.setSymbols(keys, KEY_EN);
           } else {
-            Keyboard.setSymbols(keys, KEY_RU);
+            if (this.lang === 'EN') {
+              Keyboard.setSymbols(keys, KEY_EN);
+            } else {
+              Keyboard.setSymbols(keys, KEY_RU);
+            }
           }
         } else {
           evt.target.classList.add('active');
@@ -101,8 +106,11 @@ class Keyboard {
   pressKey(keys) {
     document.addEventListener('keydown', (evt) => {
       const keyIndex = KEY_CODES.indexOf(evt.code);
-      if (KEY_CODES.indexOf(evt.code) >= 0) {
+      if (KEY_CODES.indexOf(evt.code) >= 0 && evt.code !== 'CapsLock') {
         keys[keyIndex].classList.add('active');
+      } else if (evt.code === 'CapsLock') {
+        keys[keyIndex].classList.toggle('active');
+        
       }
 
       if (evt.altKey && evt.shiftKey) {
@@ -119,6 +127,8 @@ class Keyboard {
       }
 
       if (evt.getModifierState('CapsLock')) {
+        this.upper = true;
+        localStorage.setItem('upper', this.upper);
         if (evt.shiftKey) {
           if (this.lang === 'EN') {
             Keyboard.setSymbols(keys, KEY_EN);
@@ -130,6 +140,9 @@ class Keyboard {
         } else {
           Keyboard.setSymbols(keys, KEY_UPPER_RU);
         }
+      } else {
+        this.upper = false;
+        localStorage.setItem('upper', this.upper);
       }
 
       if (evt.repeat) {
@@ -174,23 +187,37 @@ class Keyboard {
         }
       }
       const keyIndex = KEY_CODES.indexOf(evt.code);
-      if (KEY_CODES.indexOf(evt.code) >= 0) {
+      if (KEY_CODES.indexOf(evt.code) >= 0 && evt.code !== 'CapsLock') {
         keys[keyIndex].classList.remove('active');
       }
     });
   }
 }
 
+
 window.onload = () => {
   const keyboard = new Keyboard();
   keyboard.createDOM();
   const input = document.querySelector('.input-field');
   input.addEventListener('keydown', (evt) => evt.preventDefault());
+  document.querySelector('textarea').addEventListener('blur', (event) => {
+    event.target.focus();
+  });
   const KEYS = document.querySelectorAll('.key');
   if (localStorage.getItem('language') === 'EN') {
-    Keyboard.setSymbols(KEYS, KEY_EN);
+    if (localStorage.getItem('upper') === 'true') {
+      Keyboard.setSymbols(KEYS, KEY_UPPER_EN);
+      document.querySelector('.caps').classList.add('active');
+    } else {
+      Keyboard.setSymbols(KEYS, KEY_EN);
+    }
   } else {
-    Keyboard.setSymbols(KEYS, KEY_RU);
+    if (localStorage.getItem('upper') === 'true') {
+      Keyboard.setSymbols(KEYS, KEY_UPPER_RU);
+      document.querySelector('.caps').classList.add('active');
+    } else {
+      Keyboard.setSymbols(KEYS, KEY_RU);
+    }
   }
   keyboard.clickKey(KEYS);
   keyboard.pressKey(KEYS);
