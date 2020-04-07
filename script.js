@@ -10,7 +10,6 @@ class Keyboard {
   constructor() {
     this.lang = localStorage.getItem('language') || 'EN';
     this.upper = localStorage.getItem('upper') || false;
-
   }
 
   createDOM() {
@@ -29,7 +28,7 @@ class Keyboard {
       } else if (el === 'CapsLock') {
         keyDiv.classList.add('key-xl');
         keyDiv.classList.add('small-font');
-        keyDiv.classList.add('caps');
+        keyDiv.classList.add('caps');   
       } else if (el === 'ShiftLeft' || el === 'ShiftRight' || el === 'Enter') {
         keyDiv.classList.add('key-xl');
         keyDiv.classList.add('small-font');
@@ -108,9 +107,10 @@ class Keyboard {
       const keyIndex = KEY_CODES.indexOf(evt.code);
       if (KEY_CODES.indexOf(evt.code) >= 0 && evt.code !== 'CapsLock') {
         keys[keyIndex].classList.add('active');
-      } else if (evt.code === 'CapsLock') {
+      } 
+      
+      if (evt.code === 'CapsLock') {
         keys[keyIndex].classList.toggle('active');
-        
       }
 
       if (evt.altKey && evt.shiftKey) {
@@ -166,10 +166,12 @@ class Keyboard {
           } else {
             Keyboard.setSymbols(keys, KEY_UPPER_RU);
           }
-        } else if (this.lang === 'EN') {
-          Keyboard.setSymbols(keys, KEY_EN);
         } else {
-          Keyboard.setSymbols(keys, KEY_RU);
+          if (this.lang === 'EN') {
+            Keyboard.setSymbols(keys, KEY_EN);
+          } else {
+            Keyboard.setSymbols(keys, KEY_RU);
+          }
         }
       }
 
@@ -180,20 +182,21 @@ class Keyboard {
           } else {
             Keyboard.setSymbols(keys, KEY_RU);
           }
-        } else if (this.lang === 'EN') {
-          Keyboard.setSymbols(keys, KEY_UPPER_EN);
         } else {
-          Keyboard.setSymbols(keys, KEY_UPPER_RU);
+          if (this.lang === 'EN') {
+            Keyboard.setSymbols(keys, KEY_UPPER_EN);
+          } else {
+            Keyboard.setSymbols(keys, KEY_UPPER_RU);s
+          }
         }
       }
       const keyIndex = KEY_CODES.indexOf(evt.code);
-      if (KEY_CODES.indexOf(evt.code) >= 0 && evt.code !== 'CapsLock') {
+      if (KEY_CODES.indexOf(evt.code) >= 0) {
         keys[keyIndex].classList.remove('active');
       }
     });
   }
 }
-
 
 window.onload = () => {
   const keyboard = new Keyboard();
