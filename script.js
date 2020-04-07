@@ -1,8 +1,8 @@
 const KEY_CODES = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft', 'IntlBackslash', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ShiftRight', 'ControlLeft', 'AltLeft', 'MetaLeft', 'Space', 'MetaRight', 'AltRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight'];
 
-const SPECIAL_KEYS = ['Tab', 'CapsLock', 'Shift', 'Ctrl', 'Option', 'Alt', 'Control', 'Meta', 'Command', '←', '↑', '↓', '→', 'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'];
+const SPECIAL_KEYS = ['CapsLock', 'Shift', 'Ctrl', 'Option', 'Alt', 'Control', 'Meta', 'Command', '←', '↑', '↓', '→', 'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'];
 
-const TEXT_KEYS = [['§', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\'', 'CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\\', 'Enter', 'Shift', '`', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'Shift', 'Ctrl', 'Option', 'Command', ' ', 'Command', 'Option', '←', '↑', '↓', '→'], ['§', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\'', 'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', '\\', 'Enter', 'Shift', '`', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', 'Shift', 'Ctrl', 'Option', 'Command', ' ', 'Command', 'Option', '←', '↑', '↓', '→'], ['>', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ё', 'CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter', 'Shift', '`', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '/', 'Shift', 'Ctrl', 'Option', 'Command', ' ', 'Command', 'Option', '←', '↑', '↓', '→'], ['>', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', 'Ё', 'CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter', 'Shift', '`', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '/', 'Shift', 'Ctrl', 'Option', 'Command', ' ', 'Command', 'Option', '←', '↑', '↓', '→']];
+const TEXT_KEYS = [['§', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\'', 'CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\\', 'Enter', 'Shift', '`', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'Shift', 'Ctrl', 'Option', 'Command', ' ', 'Command', 'Option', '←', '↑', '↓', '→'], ['±', '!', '@', '#', '$', '%', 'ˆ', '&', '*', '(', ')', '_', '+', 'Backspace', 'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '?', 'Enter', 'Shift', '˜', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '/', 'Shift', 'Ctrl', 'Option', 'Command', ' ', 'Command', 'Option', '←', '↑', '↓', '→'], ['>', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ё', 'CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter', 'Shift', '`', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '/', 'Shift', 'Ctrl', 'Option', 'Command', ' ', 'Command', 'Option', '←', '↑', '↓', '→'], ['<', '!', '"', '№', '%', ':', ',', '.', ';', '(', ')', '_', '+', 'Backspace', 'Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', 'Ё', 'CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter', 'Shift', '[', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '/', 'Shift', 'Ctrl', 'Option', 'Command', ' ', 'Command', 'Option', '←', '↑', '↓', '→']];
 
 const [KEY_EN, KEY_UPPER_EN, KEY_RU, KEY_UPPER_RU] = TEXT_KEYS;
 
@@ -65,6 +65,8 @@ class Keyboard {
       textarea = textarea.slice(0, -1);
     } else if (symbol === 'Enter') {
       textarea += '\n';
+    } else if (symbol === 'Tab') {
+      textarea += '  ';
     } else {
       textarea += symbol;
     }
@@ -99,7 +101,9 @@ class Keyboard {
   pressKey(keys) {
     document.addEventListener('keydown', (evt) => {
       const keyIndex = KEY_CODES.indexOf(evt.code);
-      keys[keyIndex].classList.add('active');
+      if (KEY_CODES.indexOf(evt.code) >= 0) {
+        keys[keyIndex].classList.add('active');
+      }
 
       if (evt.altKey && evt.shiftKey) {
         this.lang = (this.lang === 'EN') ? this.lang = 'RU' : 'EN';
@@ -129,13 +133,19 @@ class Keyboard {
       }
 
       if (evt.repeat) {
-        Keyboard.addSymbol(keys[keyIndex].textContent);
-      } else {
+        if (keys[keyIndex]) {
+          Keyboard.addSymbol(keys[keyIndex].textContent);
+        }
+      } else if (keys[keyIndex]) {
         Keyboard.addSymbol(keys[keyIndex].textContent);
       }
     });
 
     document.addEventListener('keyup', (evt) => {
+      if (evt.code === 'Tab') {
+        evt.preventDefault();
+      }
+
       if (evt.code === 'ShiftLeft' || evt.code === 'ShiftRight') {
         if (evt.getModifierState('CapsLock')) {
           if (this.lang === 'EN') {
@@ -164,7 +174,9 @@ class Keyboard {
         }
       }
       const keyIndex = KEY_CODES.indexOf(evt.code);
-      keys[keyIndex].classList.remove('active');
+      if (KEY_CODES.indexOf(evt.code) >= 0) {
+        keys[keyIndex].classList.remove('active');
+      }
     });
   }
 }
@@ -172,8 +184,14 @@ class Keyboard {
 window.onload = () => {
   const keyboard = new Keyboard();
   keyboard.createDOM();
+  const input = document.querySelector('.input-field');
+  input.addEventListener('keydown', (evt) => evt.preventDefault());
   const KEYS = document.querySelectorAll('.key');
-  Keyboard.setSymbols(KEYS, KEY_EN);
+  if (localStorage.getItem('language') === 'EN') {
+    Keyboard.setSymbols(KEYS, KEY_EN);
+  } else {
+    Keyboard.setSymbols(KEYS, KEY_RU);
+  }
   keyboard.clickKey(KEYS);
   keyboard.pressKey(KEYS);
 };
